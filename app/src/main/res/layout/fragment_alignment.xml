@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AlignmentFragment">
+
+        <RadioGroup
+            android:id="@+id/radioGroupAlignment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/buttonSubmit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.35">
+
+            <RadioButton
+                android:id="@+id/radioButtonGood"
+                style="@style/other_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Good" />
+
+            <RadioButton
+                android:id="@+id/radioButtonLawful"
+                style="@style/other_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Lawful" />
+
+            <RadioButton
+                android:id="@+id/radioButtonNeutral"
+                style="@style/other_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Neutral" />
+
+            <RadioButton
+                android:id="@+id/radioButtonChaotic"
+                style="@style/other_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Chaotic" />
+
+            <RadioButton
+                android:id="@+id/radioButtonEvil"
+                style="@style/other_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Evil" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonSubmit"
+            style="@style/freebooters_button"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:background="@color/black"
+            android:fontFamily="@font/archivo_narrow_bold"
+            android:text="@string/submit"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/freebooters_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Choose their prevailing Alignment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

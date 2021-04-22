@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/heritageFragment">
+
+    <fragment
+        android:id="@+id/heritageFragment"
+        android:name="com.example.generatefreebootersnpc.HeritageFragment"
+        android:label="fragment_heritage"
+        tools:layout="@layout/fragment_heritage" >
+        <action
+            android:id="@+id/action_heritageFragment_to_alignmentFragment"
+            app:destination="@id/alignmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/alignmentFragment"
+        android:name="com.example.generatefreebootersnpc.AlignmentFragment"
+        android:label="fragment_alignment"
+        tools:layout="@layout/fragment_alignment" >
+        <action
+            android:id="@+id/action_alignmentFragment_to_finalFragment"
+            app:destination="@id/finalFragment" />
+        <argument
+            android:name="object"
+            app:argType="com.example.generatefreebootersnpc.NonPlayerCharacter" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedNPCFragment"
+        android:name="com.example.generatefreebootersnpc.SavedNPCFragment"
+        android:label="fragment_saved_n_p_c"
+        tools:layout="@layout/fragment_saved_n_p_c" />
+    <fragment
+        android:id="@+id/finalFragment"
+        android:name="com.example.generatefreebootersnpc.FinalFragment"
+        android:label="fragment_final"
+        tools:layout="@layout/fragment_final" >
+        <action
+            android:id="@+id/action_finalFragment_to_heritageFragment"
+            app:destination="@id/heritageFragment" />
+        <argument
+            android:name="object"
+            app:argType="com.example.generatefreebootersnpc.NonPlayerCharacter" />
+        <action
+            android:id="@+id/action_finalFragment_to_savedNPCFragment"
+            app:destination="@id/savedNPCFragment" />
+    </fragment>
+</navigation>

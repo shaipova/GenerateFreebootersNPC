@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">GenerateFreebootersNPC</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="what_is_the_name_of_this_character">What is the name of this character?</string>
+    <string name="name">Name</string>
+    <string name="info">INFO</string>
+    <string name="halfling">Halfling</string>
+    <string name="dwarf">Dwarf</string>
+    <string name="human">Human</string>
+    <string name="elf">Elf</string>
+    <string name="choose_their_prevailing_heritage">Choose their prevailing Heritage</string>
+    <string name="next">Next</string>
+    <string name="create_new">Create New</string>
+    <string name="save">Save</string>
+    <string name="submit">Submit</string>
+</resources>
