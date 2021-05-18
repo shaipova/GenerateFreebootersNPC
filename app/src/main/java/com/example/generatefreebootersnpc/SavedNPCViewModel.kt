@@ -39,6 +39,7 @@ class SavedNPCViewModel(
                 _showSnackbar.value = false
         }
 
+    fun deleteNPC(npc: SavedNPC) = viewModelScope.launch { database.deleteNPC(npc) }
 
 
 }

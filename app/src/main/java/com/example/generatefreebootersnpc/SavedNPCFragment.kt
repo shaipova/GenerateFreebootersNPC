@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.generatefreebootersnpc.database.NPCDatabase
 import com.example.generatefreebootersnpc.database.SavedNPC
 import com.example.generatefreebootersnpc.databinding.FragmentSavedNPCBinding
@@ -21,7 +23,7 @@ class SavedNPCFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_saved_n_p_c, container, false)
         binding.setLifecycleOwner(this)
@@ -54,6 +56,30 @@ class SavedNPCFragment : Fragment() {
             }
         })
 
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val npc = adapter.differ.currentList[position]
+                savedNPCViewModel.deleteNPC(npc)
+                Snackbar.make(binding.root, "Successfully deleted", Snackbar.LENGTH_LONG).show()
+                }
+            }
+
+
+        ItemTouchHelper(itemTouchHelperCallback).apply{
+            attachToRecyclerView(binding.recycleViewId)
+        }
         //adapter.notifyDataSetChanged()
 
         return binding.root
