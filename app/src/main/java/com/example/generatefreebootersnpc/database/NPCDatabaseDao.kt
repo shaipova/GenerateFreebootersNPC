@@ -15,9 +15,6 @@ interface NPCDatabaseDao {
     @Query("SELECT * FROM saved_npc_table")
     fun getAll(): LiveData<List<SavedNPC>>
 
-    @Query("DELETE FROM saved_npc_table")
-    suspend fun deleteAll()
-
     @Delete
     suspend fun deleteNPC(npc: SavedNPC)
 }

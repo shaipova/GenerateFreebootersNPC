@@ -24,22 +24,15 @@ class SavedNPCViewModel(
         }
 
 
-        fun onClear() {
-                viewModelScope.launch {
-                        _showSnackbar.value = true
-                        clear()
-                }
-        }
-
-        private suspend fun clear(){
-              database.deleteAll()
-        }
-
         fun doneShowingSnackbar() {
                 _showSnackbar.value = false
         }
 
-    fun deleteNPC(npc: SavedNPC) = viewModelScope.launch { database.deleteNPC(npc) }
+    fun deleteNPC(npc: SavedNPC) = viewModelScope.launch {
+        database.deleteNPC(npc)
+        _showSnackbar.value = true
+
+    }
 
 
 }

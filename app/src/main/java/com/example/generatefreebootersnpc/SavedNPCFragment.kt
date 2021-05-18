@@ -72,7 +72,6 @@ class SavedNPCFragment : Fragment() {
                 val position = viewHolder.adapterPosition
                 val npc = adapter.differ.currentList[position]
                 savedNPCViewModel.deleteNPC(npc)
-                Snackbar.make(binding.root, "Successfully deleted", Snackbar.LENGTH_LONG).show()
                 }
             }
 
@@ -80,7 +79,6 @@ class SavedNPCFragment : Fragment() {
         ItemTouchHelper(itemTouchHelperCallback).apply{
             attachToRecyclerView(binding.recycleViewId)
         }
-        //adapter.notifyDataSetChanged()
 
         return binding.root
     }
