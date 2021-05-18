@@ -52,7 +52,7 @@ class SavedNPCAdapter : RecyclerView.Adapter<SavedNPCAdapter.ViewHolder>() {
 
     private var onItemClickListener: ((SavedNPC) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (SavedNPC) -> Unit) {
+    private fun setOnItemClickListener(listener: (SavedNPC) -> Unit) {
         onItemClickListener = listener
     }
 }
