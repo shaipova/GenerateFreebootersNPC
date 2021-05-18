@@ -20,15 +20,18 @@ class FinalViewModel(
     fun nameUpdate(name: String) {
         _npcName.value = name
         npc.NPCname = name
+
+            viewModelScope.launch {
+                val saveNPC = SavedNPC()
+                saveNPC.npcName = _npcName.value
+                saveNPC.npcInfo = info
+                insert(saveNPC)
+            }
     }
 
     private var _navigateToStart = MutableLiveData<Boolean>()
     val navigateToStart: LiveData<Boolean>
         get() = _navigateToStart
-
-    private var _navigateToSavedNPC = MutableLiveData<Boolean>()
-    val navigateToSavedNPC: LiveData<Boolean>
-        get() = _navigateToSavedNPC
 
     private var _editText = MutableLiveData<Boolean>()
     val editText: LiveData<Boolean>
@@ -55,30 +58,11 @@ class FinalViewModel(
         _navigateToStart.value = true
     }
 
-    fun onSavedNPC() {
-        _navigateToSavedNPC.value = true
-    }
 
     fun editTextName() {
         _editText.value = true
     }
 
-    fun onSaveButton(){
-        if (npc.NPCname == "some name") {
-            Toast.makeText(getApplication(),"... and Name?", Toast.LENGTH_SHORT).show()
-        } else {
-            viewModelScope.launch {
-                val saveNPC = SavedNPC()
-                saveNPC.npcName = _npcName.value
-                saveNPC.npcInfo = info
-                insert(saveNPC)
-                onSavedNPC()
-            }
-        }
-    }
-
-    private suspend fun insert(saveCharacter: SavedNPC) {
-        database.insert(saveCharacter)
-    }
+    private suspend fun insert(saveCharacter: SavedNPC) = database.insert(saveCharacter)
 
 }

@@ -15,6 +15,7 @@ import com.example.generatefreebootersnpc.FinalFragmentArgs
 import com.example.generatefreebootersnpc.FinalFragmentDirections
 import com.example.generatefreebootersnpc.database.NPCDatabase
 import com.example.generatefreebootersnpc.databinding.FragmentFinalBinding
+import com.google.android.material.snackbar.Snackbar
 
 class FinalFragment : Fragment() {
 
@@ -45,32 +46,24 @@ class FinalFragment : Fragment() {
 
         finalViewModel.navigateToStart.observe(viewLifecycleOwner, Observer {
             if (it == true) {
-                if (finalViewModel.npc.NPCname == "some name") {
-                    Toast.makeText(activity, "... and Name?", Toast.LENGTH_SHORT).show()
-                } else {
                     view?.findNavController()?.navigate(
                             FinalFragmentDirections.actionFinalFragmentToHeritageFragment()
                     )
                 }
-            }
         })
 
-        finalViewModel.navigateToSavedNPC.observe(viewLifecycleOwner, Observer {
-            if (it == true) {
-                view?.findNavController()?.navigate(
-                        FinalFragmentDirections.actionFinalFragmentToSavedNPCFragment()
-                )
-            }
-        })
 
         finalViewModel.editText.observe(viewLifecycleOwner, Observer {
             if (it) {
                 binding.apply {
                     val name = editTextName.text.toString()
                     finalViewModel.nameUpdate(name)
-                    editTextName.visibility = View.GONE
+                    editTextName.visibility = View.INVISIBLE
                     textViewName.visibility = View.VISIBLE
+                    textAddName.visibility = View.INVISIBLE
                 }
+
+                Snackbar.make(binding.root, "NPC saved", Snackbar.LENGTH_LONG).show()
 
                 // hide keybord
                 val imm =
