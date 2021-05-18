@@ -12,12 +12,6 @@ import com.example.generatefreebootersnpc.database.SavedNPC
 
 class SavedNPCAdapter : RecyclerView.Adapter<SavedNPCAdapter.ViewHolder>() {
 
-//    var data = listOf<SavedNPC>()
-//        set(value) {
-//            field = value
-//            notifyDataSetChanged()
-//    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : SavedNPCAdapter.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.npc_card, parent, false) as TextView
@@ -25,7 +19,6 @@ class SavedNPCAdapter : RecyclerView.Adapter<SavedNPCAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //val item = data[position]
         val item = differ.currentList[position]
         holder.textView.apply {
             text = "${item.npcName} \n\n${item.npcInfo}"
@@ -36,12 +29,9 @@ class SavedNPCAdapter : RecyclerView.Adapter<SavedNPCAdapter.ViewHolder>() {
                 }
             }
         }
-
-
     }
 
     override fun getItemCount() : Int {
-        //return data.size
         return differ.currentList.size
     }
 
