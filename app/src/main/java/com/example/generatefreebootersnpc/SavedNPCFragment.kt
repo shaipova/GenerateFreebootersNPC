@@ -37,10 +37,10 @@ class SavedNPCFragment : Fragment() {
         binding.recycleViewId.adapter = adapter
 
 
-
         savedNPCViewModel.npcs.observe(viewLifecycleOwner, Observer {
            it?.let {
-               adapter.data = it
+               //adapter.data = it
+               adapter.differ.submitList(it)
            }
         })
 
@@ -54,7 +54,7 @@ class SavedNPCFragment : Fragment() {
             }
         })
 
-        adapter.notifyDataSetChanged()
+        //adapter.notifyDataSetChanged()
 
         return binding.root
     }

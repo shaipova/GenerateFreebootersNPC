@@ -30,7 +30,11 @@
         android:id="@+id/savedNPCFragment"
         android:name="com.example.generatefreebootersnpc.SavedNPCFragment"
         android:label="fragment_saved_n_p_c"
-        tools:layout="@layout/fragment_saved_n_p_c" />
+        tools:layout="@layout/fragment_saved_n_p_c" >
+        <action
+            android:id="@+id/action_savedNPCFragment_to_heritageFragment"
+            app:destination="@id/heritageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/finalFragment"
         android:name="com.example.generatefreebootersnpc.FinalFragment"
